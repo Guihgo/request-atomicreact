@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="./AtomicReactBundle/atomicreact.core.js"></script>
+    <script src="./AtomicReactBundle/atomicreact.bundle.js"></script>
+    <link rel="stylesheet" href="./AtomicReactBundle/atomicreact.bundle.css" />
+  </head>
+  <body>
+    <request id="myRequest"></request>
+    <script>
+      window.onload = function(){
+        var myRequest = document.getElementById('myRequest');
+        console.log(myRequest.Atomic.main.getServerUrl());
+        myRequest.Atomic.main.setServerUrl('http://127.0.0.1:3000/');
+        myRequest.Atomic.main.json('test/myendpoint', {msg: "hi guihgo!"}, (res)=>{
+          console.log(res);
+        });
+      }
+    </script>
+  </body>
+</html>
