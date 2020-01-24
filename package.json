@@ -1,6 +1,6 @@
 {
   "name": "request-atomicreact",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "http request module for atomicreact",
   "main": "index.js",
   "scripts": {

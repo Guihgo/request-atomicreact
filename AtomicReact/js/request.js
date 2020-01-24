@@ -1,5 +1,5 @@
 class Main {
-  constructor(){
+  constructor() {
     this.serverUrl = '127.0.0.1';
     this.headers = [];
     this.method = 'POST';
@@ -11,25 +11,23 @@ class Main {
     return this.serverUrl;
   }
   addHeader(_key, _value) {
-    this.headers.push({key: _key, value: _value});
+    this.headers.push({ key: _key, value: _value });
   }
   getHeader() {
     return this.headers;
   }
-  setMethod(_method){
+  setMethod(_method) {
     this.method = _method;
   }
-  getMethod(){
+  getMethod() {
     return this.method;
   }
-  request(endPoint, objToSend, callback) {
-    var data = JSON.stringify(objToSend);
-
+  request(endPoint, data, callback) {
     var xhr = new XMLHttpRequest();
 
-    xhr.open(this.method, this.serverUrl+endPoint);
+    xhr.open(this.method, this.serverUrl + endPoint);
 
-    this.headers.forEach((header)=>{
+    this.headers.forEach((header) => {
       xhr.setRequestHeader(header.key, header.value);
     });
 
@@ -42,10 +40,9 @@ class Main {
     xhr.send(data);
   }
   json(endPoint, objToSend, callback) {
-    this.headers = [];
     this.addHeader("content-type", "application/json");
     this.addHeader("cache-control", "no-cache");
-    this.request(endPoint, objToSend, (responseText)=>{
+    this.request(endPoint, JSON.stringify(objToSend), (responseText) => {
       callback(JSON.parse(responseText));
     });
   }
